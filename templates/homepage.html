@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogly{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Blogly Recent Posts</h1>
+
+    {% for post in posts %}
+    <h2 class="mt-4">
+    <a href="/posts/{{ post.id }}">{{ post.title }}</a>
+    </h2>
+    <p>{{ post.content }}</p>
+    <p>
+    <small>By {{ post.user.full_name }} on {{ post.formatted_date }}<small>
+    </p>
+    {% endfor %}
+
+    <form>
+        <button class="btn btn-primary btn-sm m-2"
+                formaction="/users"
+                formmethod="GET">Go to Users Page
+        </button>
+    </form>
+
+</div>
+
+
+{% endblock %}}
